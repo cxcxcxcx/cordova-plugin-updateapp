@@ -33,7 +33,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import org.chinadialects.org.R;
+import org.chinadialects.main.R;
 
 public class UpdateApp extends CordovaPlugin {
 
