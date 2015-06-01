@@ -3,8 +3,8 @@
  * @author robin
  */
 function UpdateApp() {}
-UpdateApp.prototype.checkAndUpdate = function(checkPath) {
-	cordova.exec(null, null, "UpdateApp", "checkAndUpdate", [checkPath]);
+UpdateApp.prototype.checkAndUpdate = function(successCallback, failureCallback, checkPath) {
+	cordova.exec(successCallback, failureCallback, "UpdateApp", "checkAndUpdate", [checkPath]);
 }
 UpdateApp.prototype.getCurrentVerInfo = function(successCallback) {
 	cordova.exec(successCallback, null, "UpdateApp", "getCurrentVersion", []);

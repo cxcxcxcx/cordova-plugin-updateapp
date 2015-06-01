@@ -69,7 +69,7 @@ public class UpdateApp extends CordovaPlugin {
         this.mContext = cordova.getActivity();
         if ("checkAndUpdate".equals(action)) {
             this.checkPath = args.getString(0);
-            checkAndUpdate();
+            checkAndUpdate(callbackContext);
             return true;
         } else if ("getCurrentVersion".equals(action)) {
             callbackContext.success(this.getCurrentVerCode() + "");
@@ -97,15 +97,19 @@ public class UpdateApp extends CordovaPlugin {
     /**
      * 检查更新
      */
-    private void checkAndUpdate() {
+    private void checkAndUpdate(final CallbackContext callbackContext) {
         Runnable runnable = new Runnable() {
             public void run() {
                 if (getServerVerInfo()) {
                     int currentVerCode = getCurrentVerCode();
                     if (newVerCode > currentVerCode) {
                         showNoticeDialog();
-                    }
-                }
+                    } else {
+                        callbackContext.success("");
+					}
+                } else {
+				  CallbackContext.error("Can't connect to the server");
+				}
             }
         };
         this.cordova.getThreadPool().execute(runnable);
@@ -170,13 +174,10 @@ public class UpdateApp extends CordovaPlugin {
             }
             reader.close();
 
-            JSONArray array = new JSONArray(verInfoStr.toString());
-            if (array.length() > 0) {
-                JSONObject obj = array.getJSONObject(0);
-                newVerCode = obj.getInt("verCode");
-                newVerName = obj.getString("verName");
-                downloadPath = obj.getString("apkPath");
-            }
+			JSONObject obj = new JSONObject(verInfoStr.toString());
+			newVerCode = obj.getInt("verCode");
+			newVerName = obj.getString("verName");
+			downloadPath = obj.getString("apkPath");
         } catch (Exception e) {
             Log.d(LOG_TAG, "获取服务器上的版本信息异常：" + e.toString());
             return false;
