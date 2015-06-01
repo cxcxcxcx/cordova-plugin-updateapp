@@ -108,7 +108,7 @@ public class UpdateApp extends CordovaPlugin {
                         callbackContext.success("");
 					}
                 } else {
-				  CallbackContext.error("Can't connect to the server");
+				  callbackContext.error("Can't connect to the server");
 				}
             }
         };
