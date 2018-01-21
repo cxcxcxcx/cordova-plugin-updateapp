@@ -1,0 +1,30 @@
+{
+  "name": "cordova-plugin-updateapp",
+  "version": "1.1.1",
+  "cordova_name": "App updater",
+  "description": "Updates app for Android",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cxcxcxcx/cordova-plugin-updateapp.git"
+  },
+  "keywords": [
+    "cordova",
+    "phonegap",
+    "update", "app"
+  ],
+  "engines": [],
+  "cordova": {
+    "id": "org.apache.cordova.update.app.cxcxcx",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "author": "south-pacific",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://github.com/cxcxcxcx/cordova-plugin-updateapp"
+}
+
