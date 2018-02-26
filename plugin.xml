@@ -37,5 +37,6 @@
             <string name="soft_updating">正在更新</string>
             <string name="soft_update_cancel">取消</string>
         </config-file>
+        <hook type="after_plugin_install" src="scripts/hook_add_r_import.js" />
     </platform>
 </plugin>
